@@ -56,12 +56,12 @@ def crawl(page, all_links = set(), assets = {} ):
 
 page_to_crawl = "https://www.yoyowallet.com/"
 results = crawl(page_to_crawl)
-print("sitemap",results['sitemap'])
-print("assets", results["mapped_assets"][page_to_crawl])
+print("SITEMAP",results['sitemap'])
+print("ASSETS", results["mapped_assets"][page_to_crawl])
 
 def print_assets_to_page(results):
   for link in results["sitemap"]:
-    print(link+" has the following assets:")
+    print(link + " has the following assets:")
     print("--------------------------------")
     for elem in results["mapped_assets"][page_to_crawl+link[1:]]:
       print(elem)
