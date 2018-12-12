@@ -1,8 +1,6 @@
 import requests
 import re
 
-
-
 def get_content(page):
   try:
     response = requests.get(page)
@@ -56,6 +54,11 @@ def crawl(page, all_links = set(), assets = {} ):
       crawl(page_to_crawl+link[1:], all_links, assets)
   return { "sitemap": sorted(all_links), "mapped_assets": assets }
 
+page_to_crawl = "https://www.yoyowallet.com/"
+results = crawl(page_to_crawl)
+print("sitemap",results['sitemap'])
+print("assets", results["mapped_assets"][page_to_crawl])
+
 def print_assets_to_page(results):
   for link in results["sitemap"]:
     print(link+" has the following assets:")
@@ -64,8 +67,5 @@ def print_assets_to_page(results):
       print(elem)
       print()
 
-page_to_crawl = "https://www.yoyowallet.com/"
-results = crawl(page_to_crawl)
-print("sitemap",results['sitemap'])
 print_assets_to_page(results)
 

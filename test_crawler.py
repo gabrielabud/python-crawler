@@ -3,7 +3,7 @@ import crawler
 
 def test_get_content(requests_mock):
   requests_mock.get("https://www.yoyowallet.com/", content=b"html dom properties")
-  assert "html dom properties".encode() == crawler.get_content('https://www.yoyowallet.com/')
+  assert crawler.get_content('https://www.yoyowallet.com/') == "html dom properties".encode()
 
 def test_get_href():
   html_href = """<!DOCTYPE html>
